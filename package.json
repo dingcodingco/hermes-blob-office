@@ -27,13 +27,15 @@
     "bin",
     "server",
     "public",
-    "office.config.json"
+    "office.config.json",
+    "examples"
   ],
   "engines": {
     "node": ">=20"
   },
   "scripts": {
     "demo": "node bin/blob-office.js",
+    "demo:en": "node bin/blob-office.js --config examples/en/office.config.json",
     "hermes": "node bin/blob-office.js --hermes",
     "test": "node --test test/*.test.js"
   }

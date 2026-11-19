@@ -1,4 +1,4 @@
-<p align="center"><img src="docs/cover.png" alt="Blob Office" width="100%"></p>
+<p align="center"><img src="docs/cover-en.png" alt="Blob Office" width="100%"></p>
 
 <p align="center"><b>English</b> · <a href="README.ko.md">한국어</a></p>
 
@@ -6,7 +6,7 @@
 
 Shows the [Hermes Agent](https://github.com/NousResearch/hermes-agent) bots on your computer as squishy blob coworkers in a building where every floor does a different kind of work.
 
-![Demo: riding the elevator for approval, starting a meeting](docs/demo.gif)
+![Demo: riding the elevator for approval, starting a meeting](docs/demo-en.gif)
 
 - One profile is one bot. Its job decides its floor; each floor has its own body shapes and colours, and each job its own prop.
 - Bots really walk around. When one needs approval it takes the elevator down to the 1F approval desk; when a meeting starts they gather at the 2F table.
@@ -17,13 +17,13 @@ Shows the [Hermes Agent](https://github.com/NousResearch/hermes-agent) bots on y
 
 | Floor | Work | Example bots |
 |---|---|---|
-| 5F Content Studio | topics, shorts/reels, scheduled posts, stats | 아이디 · 컷 · 카피 · 타이머 · 그래피 |
-| 4F Sales & Marketing | proposals and quotes, card news, promo copy | 부릉 · 카드 · 확성 |
-| 3F Docs & Data | Excel and charts, slides, summaries, sheet roll-ups, review analysis | 셀리 · 슬라이 · 요약이 · 시그마 · 구름 |
-| 2F Assistant Office | mail, meeting notes, scheduling, weekly reports, industry news | 레터 · 노트 · 캘리 · 위클리 · 안테나 |
-| 1F Lobby & Approvals | approvals, morning briefing, moving to Hermes | 모아 · 초롱 · 헤르 |
+| 5F Content Studio | topics, shorts/reels, scheduled posts, stats | Ida · Cutter · Copi · Tim · Grafy |
+| 4F Sales & Marketing | proposals and quotes, card news, promo copy | Vroom · Carda · Megs |
+| 3F Docs & Data | Excel and charts, slides, summaries, sheet roll-ups, review analysis | Celia · Slidey · Sumi · Sigma · Nimbus |
+| 2F Assistant Office | mail, meeting notes, scheduling, weekly reports, industry news | Letty · Minnie · Cal · Wes · Scout |
+| 1F Lobby & Approvals | approvals, morning briefing, moving to Hermes | Moa · Bree · Herm |
 
-![Bot roster](docs/roster.png)
+![Bot roster](docs/roster-en.png)
 
 ## 1. Try the demo (1 minute)
 
@@ -32,7 +32,8 @@ Requires [Node.js](https://nodejs.org) 20+.
 ```bash
 git clone https://github.com/dingcodingco/hermes-blob-office
 cd hermes-blob-office
-node bin/blob-office.js
+npm run demo:en          # English bots and sample data
+# npm run demo           # the same office in Korean
 ```
 
 Open http://127.0.0.1:4300. The demo uses sample data and does not need Hermes; the top of the screen says "Demo · Sample Data". Bots finish work, pick up new work and now and then come down for approval on their own.
@@ -42,7 +43,7 @@ Open http://127.0.0.1:4300. The demo uses sample data and does not need Hermes; 
 On a computer with Hermes installed:
 
 ```bash
-node bin/blob-office.js --hermes
+node bin/blob-office.js --hermes --config examples/en/office.config.json   # English
 ```
 
 | On screen | Read from |
@@ -76,7 +77,7 @@ For other profiles, add `API_SERVER_KEY` to `~/.hermes/profiles/<profile>/.env` 
 Add one line per profile to `agents` in `office.config.json`:
 
 ```json
-{ "id": "card", "name": "Card", "profile": "cardnews", "job": "card news" }
+{ "id": "card", "name": "Carda", "profile": "cardnews", "job": "Card-news design" }
 ```
 
 - `profile` is the Hermes profile name.
@@ -85,7 +86,7 @@ Add one line per profile to `agents` in `office.config.json`:
 - Body shape and colour rotate through the floor's family; override with `"shape"` and `"color"`.
 - Profiles not listed are added automatically. Turn that off with `"autoAddProfiles": false`.
 - More than 6 bots on one floor opens building 2, 3…; switch with the buttons at the top.
-- Add `"lang": "en"` for the English UI. Default is Korean (`"ko"`).
+- Add `"lang": "en"` for the English UI. Default is Korean (`"ko"`). [`examples/en/office.config.json`](examples/en/office.config.json) is a full English office; start from it, or run any config with `node bin/blob-office.js --config path/to/office.config.json`.
 
 ## 5. Meetings
 

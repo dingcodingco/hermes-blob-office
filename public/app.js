@@ -84,6 +84,8 @@ function targetOf(a, s) {
   }
   return { ...homeOf(a), spot: "home" };
 }
+// Rough text width: Hangul/CJK glyphs are about twice as wide as Latin ones.
+const textW = (str, size) => [...String(str)].reduce((w, c) => w + (c.charCodeAt(0) > 0x1100 ? 1.04 : c === " " ? 0.32 : 0.6) * size, 0);
 const yOf = (floor, raised) => FLOOR_Y[floor] + (raised ? DESK_SLOT_Y : 0);
 
 // Route: same floor -> walk; other floor -> walk to the lift, ride, walk out.
@@ -102,7 +104,7 @@ function syncMovers() {
     const s = agentState(a.id); if (!s) continue;
     const dest = targetOf(a, s);
     let m = movers[a.id];
-    if (!m) { const h = homeOf(a); m = movers[a.id] = { x: h.x, y: yOf(h.floor, h.raised), floor: h.floor, route: [], dest: h }; }
+    if (!m) { const h = homeOf(a); m = movers[a.id] = { x: h.x, y: yOf(h.floor, h.raised), floor: h.floor, route: [], dest: { ...h, spot: "home" } }; }
     const same = m.dest && m.dest.floor === dest.floor && m.dest.x === dest.x;
     if (!same) {
       // leaving the raised desk spot: step down first
@@ -138,7 +140,7 @@ function exprOf(a, s, m) {
   return EXPR[s.status] || "idle";
 }
 function tagSVG(x, y, text, dot, strong) {
-  const w = Math.min(260, [...text].length * 12.5 + 30);
+  const w = Math.min(280, textW(text, 12) + 32);
   return `<g class="tag" transform="translate(${x - w / 2} ${y})"><rect x="-2" y="-2" width="${w + 4}" height="24" rx="11" fill="#3d3733"/><rect class="fill" width="${w}" height="20" rx="10" fill="${strong ? "#fff1d6" : "#fffaf3"}"/><circle cx="12" cy="10" r="4" fill="${dot}"/><text x="21" y="14.5" font-size="12" font-weight="800" fill="#3d3733">${esc(text)}</text></g>`;
 }
 const DOT = { working: "#3b82f6", needs_approval: "#f59e0b", done: "#22c55e", idle: "#9ca3af", offline: "#c4bbb2" };
@@ -149,7 +151,7 @@ function draw(ms) {
   let s = `<defs><clipPath id="desk"><rect x="408" y="810" width="286" height="90" rx="14"/></clipPath></defs><image href="${BG}" width="${W}" height="${H}"/>`;
   // floor labels
   for (const f of config.floors) {
-    const y = FLOOR_Y[f.id] - 128, label = `${f.f} ${config.lang === "en" ? f.en : f.ko}`, w = [...label].length * 12.5 + 40;
+    const y = FLOOR_Y[f.id] - 128, label = `${f.f} ${config.lang === "en" ? f.en : f.ko}`, w = textW(label, 13) + 42;
     s += `<g transform="translate(24 ${y})"><rect x="-2.5" y="-2.5" width="${w + 5}" height="31" rx="15" fill="#3d3733"/><rect width="${w}" height="26" rx="13" fill="#fffaf3"/><circle cx="14" cy="13" r="5" fill="${f.accent}"/><text x="26" y="18" font-size="13" font-weight="800" fill="#3d3733">${esc(label)}</text></g>`;
   }
   const shown = config.agents.filter((a) => a.page === page || agentState(a.id)?.location === "meeting");
@@ -179,7 +181,7 @@ function draw(ms) {
       `<svg x="${m.x - SIZE / 2}" y="${m.y - SIZE * 0.86}" width="${SIZE}" height="${SIZE}" viewBox="-10 -10 220 220" overflow="visible">${body}</svg>` +
       `<rect x="${m.x - SIZE / 2}" y="${m.y - SIZE}" width="${SIZE}" height="${SIZE}" fill="transparent"/></g>`;
     const label = m.moving ? `${a.name} · ${t("moving")}` : st.status === "needs_approval" ? `${a.name} · ${st.task}` : a.name;
-    tags.push({ y: m.y, html: tagSVG(m.x, owner ? FLOOR_Y.lobby - 34 : m.y - SIZE * 0.86 - 20, label.length > 22 ? label.slice(0, 21) + "…" : label, DOT[st.status] || DOT.idle, st.status === "needs_approval") });
+    tags.push({ y: m.y, html: tagSVG(m.x, owner ? FLOOR_Y.lobby - 6 : m.y - SIZE * 0.86 - 20, label.length > 22 ? label.slice(0, 21) + "…" : label, DOT[st.status] || DOT.idle, st.status === "needs_approval") });
   }
   if (!deskDrawn) s += `<image href="${BG}" width="${W}" height="${H}" clip-path="url(#desk)"/>`;
   s += tags.sort((p, q) => p.y - q.y).map((x) => x.html).join("");
@@ -189,7 +191,7 @@ function draw(ms) {
   $("#stage").innerHTML = s;
 }
 function signSVG(cx, y, text, fill) {
-  const w = [...text].length * 13 + 30;
+  const w = textW(text, 13) + 34;
   return `<g transform="translate(${cx - w / 2} ${y})"><rect x="-3" y="-3" width="${w + 6}" height="34" rx="15" fill="#3d3733"/><rect width="${w}" height="28" rx="13" fill="${fill}"/><text x="${w / 2}" y="19" text-anchor="middle" font-size="13" font-weight="900" fill="#3d3733">${esc(text)}</text></g>`;
 }
 

@@ -1,0 +1,32 @@
+{
+  "title": "Blob Office",
+  "lang": "en",
+  "autoAddProfiles": true,
+  "agents": [
+    { "id": "moa",      "name": "Moa",    "floor": "lobby",     "job": "Approves before anything is sent, posted or paid", "prop": "stamp",     "profile": "default" },
+    { "id": "chorong",  "name": "Bree",   "floor": "lobby",     "job": "Morning briefing · chief of staff",              "prop": "brief",     "profile": "chief" },
+    { "id": "her",      "name": "Herm",   "floor": "lobby",     "job": "Moves routines to Hermes",                       "prop": "box",       "profile": "hermes" },
+
+    { "id": "letter",   "name": "Letty",  "floor": "secretary", "job": "Sorts mail, drafts replies",                     "prop": "envelope",  "profile": "mail" },
+    { "id": "note",     "name": "Minnie", "floor": "secretary", "job": "Meeting notes, assigns tasks",                   "prop": "notebook",  "profile": "minutes" },
+    { "id": "cally",    "name": "Cal",    "floor": "secretary", "job": "Finds meeting times",                            "prop": "calendar",  "profile": "calendar" },
+    { "id": "weekly",   "name": "Wes",    "floor": "secretary", "job": "Weekly report drafts",                           "prop": "clipboard", "profile": "weekly" },
+    { "id": "antenna",  "name": "Scout",  "floor": "secretary", "job": "Industry news, live X tracking",                 "prop": "antenna",   "profile": "news" },
+
+    { "id": "celly",    "name": "Celia",  "floor": "oa",        "job": "Spreadsheet cleanup and charts",                 "prop": "sheet",     "profile": "excel" },
+    { "id": "slidey",   "name": "Slidey", "floor": "oa",        "job": "Meeting slide drafts",                           "prop": "slides",    "profile": "ppt" },
+    { "id": "yoyak",    "name": "Sumi",   "floor": "oa",        "job": "Summaries and formatting",                       "prop": "marker",    "profile": "docs" },
+    { "id": "sigma",    "name": "Sigma",  "floor": "oa",        "job": "Google Sheets roll-ups",                         "prop": "sigma",     "profile": "sheets" },
+    { "id": "gureum",   "name": "Nimbus", "floor": "oa",        "job": "Review and survey analysis",                     "prop": "magnifier", "profile": "reviews" },
+
+    { "id": "bureung",  "name": "Vroom",  "floor": "sales",     "job": "Proposals and quotes",                           "prop": "case",      "profile": "sales" },
+    { "id": "card",     "name": "Carda",  "floor": "sales",     "job": "Card-news design",                               "prop": "palette",   "profile": "cardnews" },
+    { "id": "hwakseong","name": "Megs",   "floor": "sales",     "job": "Promo copy per channel",                         "prop": "megaphone", "profile": "promo" },
+
+    { "id": "idea",     "name": "Ida",    "floor": "content",   "job": "Finds channel topics",                           "prop": "bulb",      "profile": "topics" },
+    { "id": "cut",      "name": "Cutter", "floor": "content",   "job": "Makes and checks one short",                     "prop": "camera",    "profile": "shorts" },
+    { "id": "copy",     "name": "Copi",   "floor": "content",   "job": "Makes more in the same format",                  "prop": "stack",     "profile": "batch" },
+    { "id": "timer",    "name": "Tim",    "floor": "content",   "job": "Scheduled posts, channel rules",                 "prop": "clock",     "profile": "scheduler" },
+    { "id": "graphy",   "name": "Grafy",  "floor": "content",   "job": "Tracks stats, links them to sales",              "prop": "chart",     "profile": "stats" }
+  ]
+}

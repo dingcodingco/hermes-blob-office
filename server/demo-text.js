@@ -1,0 +1,123 @@
+// Demo text in each language. Bot ids match office.config.json (and examples/en/office.config.json).
+
+const TEXT = {
+  ko: {
+  work: {
+  moa:       ["승인 대기열 확인", "오늘 승인 4건 처리했어요."],
+  chorong:   ["아침 브리핑 정리", "아침 브리핑 보냈어요. 오늘 일정 3개, 승인 대기 1건이에요."],
+  her:       ["루틴을 헤르메스로 옮기는 중", "채널 운영 루틴 2개를 헤르메스로 옮겼어요."],
+  letter:    ["받은 메일 분류 중", "메일 12통 분류했어요. 답장 초안 3개 써 뒀어요."],
+  note:      ["회의록 정리 중", "회의록 정리하고 할 일 5개를 담당자에게 배정했어요."],
+  cally:     ["다음 주 회의 시간 맞추는 중", "목요일 오후 2시로 회의 잡았어요. 초대장 보냈어요."],
+  weekly:    ["주간 보고 초안 쓰는 중", "주간 보고 초안 올렸어요. 숫자 3곳만 확인해 주세요."],
+  antenna:   ["업계 소식 훑는 중", "오늘 업계 소식 5개 요약했어요. X 반응이 큰 건 2개예요."],
+  celly:     ["매출 엑셀 정리 중", "매출 엑셀 정리하고 월별 그래프 붙였어요."],
+  slidey:    ["회의 자료 PPT 만드는 중", "회의 자료 PPT 8장 초안 만들었어요."],
+  yoyak:     ["계약서 요약 중", "계약서 12쪽을 1쪽으로 요약하고 서식 맞췄어요."],
+  sigma:     ["시트 자동 집계 돌리는 중", "구글 시트 집계 끝났어요. 이번 주 신청 47건이에요."],
+  gureum:    ["고객 리뷰 분석 중", "리뷰 120개 분석했어요. 불만 1위는 배송 속도예요."],
+  bureung:   ["견적서 초안 쓰는 중", "견적서 초안 2건 만들었어요."],
+  card:      ["카드뉴스 6장 만드는 중", "카드뉴스 6장 완성했어요."],
+  hwakseong: ["채널별 홍보 문구 쓰는 중", "인스타·블로그·X용 홍보 문구 3종 썼어요."],
+  idea:      ["다음 주 주제 찾는 중", "다음 주 주제 후보 5개 골랐어요."],
+  cut:       ["쇼츠 한 편 편집 중", "쇼츠 한 편 완성하고 자막까지 검수했어요."],
+  copy:      ["같은 틀로 3편 만드는 중", "같은 틀로 쇼츠 3편 더 만들었어요."],
+  timer:     ["예약 게시 걸어 두는 중", "내일 아침 7시 게시 예약 걸어 뒀어요."],
+  graphy:    ["반응 숫자 모으는 중", "이번 주 조회수·저장 수 기록했어요. 링크 클릭 31회예요."],
+  },
+
+// Work that should not go out without you.
+  approvals: {
+  card:      "카드뉴스 6장, 인스타에 게시해도 될까요?",
+  letter:    "고객 3명에게 답장 보내도 될까요?",
+  bureung:   "견적서를 거래처에 보내도 될까요?",
+  timer:     "내일 아침 7시 예약 게시 걸어도 될까요?",
+  hwakseong: "홍보 문구를 X에 올려도 될까요?",
+  },
+
+  skills: {
+  moa: [["승인 규칙", "결제 한도 확인"], ["텔레그램"]], chorong: [["아침 브리핑", "일 나눠 맡기기"], ["구글 캘린더", "텔레그램"]],
+  her: [["루틴 옮기기"], ["헤르메스"]], letter: [["메일 분류", "답장 초안"], ["Gmail"]], note: [["회의록 정리", "할 일 배정"], ["노션"]],
+  cally: [["회의 시간 조율"], ["구글 캘린더"]], weekly: [["주간 보고 양식"], ["구글 문서"]], antenna: [["업계 소식 요약", "X 실시간 추적"], ["웹 브라우저", "X"]],
+  celly: [["엑셀 정리", "그래프 만들기"], ["엑셀"]], slidey: [["PPT 초안"], ["파워포인트"]], yoyak: [["문서 요약", "서식 맞추기"], ["구글 문서"]],
+  sigma: [["시트 자동 집계"], ["구글 시트"]], gureum: [["리뷰 분석", "설문 정리"], ["구글 폼"]], bureung: [["견적서 양식", "제안서 초안"], ["Gmail", "구글 시트"]],
+  card: [["카드뉴스 템플릿"], ["캔바", "인스타그램"]], hwakseong: [["채널별 문구 규칙"], ["인스타그램", "X"]], idea: [["주제 찾기"], ["유튜브", "웹 브라우저"]],
+  cut: [["쇼츠 편집", "자막 검수"], ["캡컷"]], copy: [["같은 틀로 여러 편"], ["캡컷"]], timer: [["예약 게시", "채널별 규칙"], ["유튜브", "인스타그램"]],
+  graphy: [["반응 기록", "판매 연결"], ["구글 시트"]],
+  },
+
+
+  kanban: [
+    ["t1", "카드뉴스 6장 게시", "blocked", "card"], ["t2", "받은 메일 분류·답장 초안", "running", "letter"],
+    ["t3", "매출 엑셀 그래프 보고서", "running", "celly"], ["t4", "회의 자료 PPT 8장", "running", "slidey"],
+    ["t5", "쇼츠 한 편 완성·검수", "running", "cut"], ["t6", "다음 주 주제 후보", "todo", "idea"],
+    ["t7", "견적서 초안 2건", "running", "bureung"], ["t8", "아침 브리핑", "done", "chorong"],
+    ["t9", "반응 숫자 기록", "done", "graphy"], ["t10", "루틴 헤르메스로 옮기기", "todo", "her"],
+  ],
+  meetTopic: "신제품 출시 준비, 할 일 나누기",
+  meetKids: [["출시 카드뉴스 6장", "card"], ["출시 쇼츠 대본", "cut"], ["비슷한 상품 가격 비교표", "celly"]],
+  meetDone: (n) => `출시 준비 할 일 ${n}개로 나눠서 맡겼어요.`,
+  approvedFeed: (q) => `${q.replace(/(해도 될까요\?|걸어도 될까요\?|올려도 될까요\?|보내도 될까요\?)$/, "")} → 승인받고 처리했어요.`,
+  reply: "알겠어요. 끝나면 알려 드릴게요.",
+  chatScene: ["출시 카드뉴스 6장 만들어 줘", "6장 만들었어요. 1장은 표지, 5장은 기능 소개예요."],
+  },
+  en: {
+  work: {
+    moa:       ["Checking the approval queue", "Handled 4 approvals today."],
+    chorong:   ["Putting the morning briefing together", "Morning briefing sent. 3 meetings today, 1 approval waiting."],
+    her:       ["Moving routines to Hermes", "Moved 2 channel routines to Hermes."],
+    letter:    ["Sorting the inbox", "Sorted 12 emails and drafted 3 replies."],
+    note:      ["Writing up meeting notes", "Meeting notes done; 5 tasks assigned to their owners."],
+    cally:     ["Finding a time for next week", "Booked Thursday 2 PM and sent the invites."],
+    weekly:    ["Drafting the weekly report", "Weekly report draft is up. Please check 3 numbers."],
+    antenna:   ["Scanning industry news", "Summarized 5 news items. 2 are getting big reactions on X."],
+    celly:     ["Cleaning up the sales sheet", "Sales sheet cleaned up, monthly chart added."],
+    slidey:    ["Building the meeting deck", "Drafted an 8-slide meeting deck."],
+    yoyak:     ["Summarizing the contract", "Summed up a 12-page contract on 1 page and fixed the formatting."],
+    sigma:     ["Running the sheet roll-up", "Sheet roll-up done: 47 sign-ups this week."],
+    gureum:    ["Analyzing customer reviews", "Analyzed 120 reviews. Top complaint: shipping speed."],
+    bureung:   ["Drafting quotes", "Drafted 2 quotes."],
+    card:      ["Designing 6 card-news slides", "Finished 6 card-news slides."],
+    hwakseong: ["Writing promo copy per channel", "Wrote promo copy for Instagram, blog and X."],
+    idea:      ["Looking for next week's topics", "Picked 5 topic ideas for next week."],
+    cut:       ["Editing a short", "Finished one short with checked captions."],
+    copy:      ["Making 3 more in the same format", "Made 3 more shorts in the same format."],
+    timer:     ["Scheduling posts", "Scheduled tomorrow's 7 AM post."],
+    graphy:    ["Collecting stats", "Logged this week's views and saves: 31 link clicks."],
+  },
+  approvals: {
+    card:      "Post the 6 card-news slides to Instagram?",
+    letter:    "Send replies to 3 customers?",
+    bureung:   "Send the quote to the client?",
+    timer:     "Schedule tomorrow's 7 AM post?",
+    hwakseong: "Post the promo copy on X?",
+  },
+  skills: {
+    moa: [["Approval rules", "Spending limit check"], ["Telegram"]], chorong: [["Morning briefing", "Splitting work"], ["Google Calendar", "Telegram"]],
+    her: [["Moving routines"], ["Hermes"]], letter: [["Mail sorting", "Reply drafts"], ["Gmail"]], note: [["Meeting notes", "Task assignment"], ["Notion"]],
+    cally: [["Scheduling"], ["Google Calendar"]], weekly: [["Weekly report template"], ["Google Docs"]], antenna: [["News digest", "Live X tracking"], ["Web browser", "X"]],
+    celly: [["Spreadsheet cleanup", "Charts"], ["Excel"]], slidey: [["Slide drafts"], ["PowerPoint"]], yoyak: [["Summaries", "Formatting"], ["Google Docs"]],
+    sigma: [["Sheet roll-ups"], ["Google Sheets"]], gureum: [["Review analysis", "Survey digest"], ["Google Forms"]], bureung: [["Quote template", "Proposal drafts"], ["Gmail", "Google Sheets"]],
+    card: [["Card-news template"], ["Canva", "Instagram"]], hwakseong: [["Copy rules per channel"], ["Instagram", "X"]], idea: [["Topic research"], ["YouTube", "Web browser"]],
+    cut: [["Short editing", "Caption check"], ["CapCut"]], copy: [["Batch production"], ["CapCut"]], timer: [["Scheduled posts", "Channel rules"], ["YouTube", "Instagram"]],
+    graphy: [["Stats logging", "Sales links"], ["Google Sheets"]],
+  },
+  kanban: [
+    ["t1", "Post 6 card-news slides", "blocked", "card"], ["t2", "Sort inbox and draft replies", "running", "letter"],
+    ["t3", "Sales sheet chart report", "running", "celly"], ["t4", "8-slide meeting deck", "running", "slidey"],
+    ["t5", "Finish and check one short", "running", "cut"], ["t6", "Topic ideas for next week", "todo", "idea"],
+    ["t7", "2 quote drafts", "running", "bureung"], ["t8", "Morning briefing", "done", "chorong"],
+    ["t9", "Log weekly stats", "done", "graphy"], ["t10", "Move routines to Hermes", "todo", "her"],
+  ],
+  meetTopic: "Launch prep: split the work",
+  meetKids: [["Launch card news (6 slides)", "card"], ["Launch short script", "cut"], ["Price comparison of similar products", "celly"]],
+  meetDone: (n) => `Split launch prep into ${n} tasks and handed them out.`,
+  approvedFeed: (q) => `${q.replace(/\?$/, "")}: approved and done.`,
+  reply: "Understood. I will let you know when finished.",
+  chatScene: ["Make 6 card-news slides for the launch", "Done: 6 slides, 1 cover and 5 feature slides."],
+  },
+};
+
+const textFor = (lang) => TEXT[lang] || TEXT.ko;
+
+module.exports = { TEXT, textFor };

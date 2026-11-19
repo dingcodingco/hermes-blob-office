@@ -2,7 +2,7 @@
 // Usage:
 //   npx hermes-blob-office            -> demo mode (sample data, no Hermes needed)
 //   npx hermes-blob-office --hermes   -> read real state from Hermes on this computer
-//   options: --port 4300
+//   options: --port 4300, --config path/to/office.config.json (e.g. examples/en/office.config.json for English)
 const { start } = require("../server");
 
 const args = process.argv.slice(2);
@@ -15,4 +15,5 @@ const value = (name, fallback) => {
 start({
   mode: flag("--hermes") ? "hermes" : "demo",
   port: Number(value("--port", process.env.PORT || 4300)),
+  configPath: value("--config", process.env.OFFICE_CONFIG),
 });

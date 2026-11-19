@@ -58,3 +58,21 @@ test("i18n string table returns localized and formatted strings", () => {
   assert.strictEqual(t("en", "meeting_decompose_topic", "Launch", 3), "Launch · Splitting into 3 tasks");
   assert.strictEqual(t("unknown", "msg_empty"), "메시지가 비어 있어요.");
 });
+
+test("English demo uses English text and the English example config", () => {
+  process.env.OFFICE_DEMO_STILL = "1";
+  const fs = require("node:fs");
+  const path = require("node:path");
+  const { DemoOffice } = require("../server/demo");
+  const config = layoutAgents(JSON.parse(fs.readFileSync(path.join(__dirname, "..", "examples", "en", "office.config.json"), "utf8")));
+  const office = new DemoOffice(config, () => {});
+  const s = office.snapshot();
+  const korean = /[가-힣]/;
+  assert.strictEqual(config.lang, "en");
+  assert.ok(config.agents.every((a) => !korean.test(a.name) && !korean.test(a.job) && !korean.test(a.team)));
+  assert.ok(s.kanban.every((k) => !korean.test(k.title)));
+  assert.ok(s.agents.every((a) => !korean.test(a.task)));
+  assert.ok(s.feed.every((f) => !korean.test(f.text)));
+  office.startMeeting();
+  assert.ok(!korean.test(office.state.meeting.topic));
+});

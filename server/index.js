@@ -19,18 +19,18 @@ function loadDotEnv(file) {
   }
 }
 
-function loadConfig() {
+function loadConfig(configPath) {
   const local = path.join(process.cwd(), "office.config.json");
-  const file = fs.existsSync(local) ? local : path.join(ROOT, "office.config.json");
+  const file = configPath ? path.resolve(configPath) : fs.existsSync(local) ? local : path.join(ROOT, "office.config.json");
   const config = JSON.parse(fs.readFileSync(file, "utf8"));
   config.lang = config.lang || "ko";
   config.rawAgents = JSON.parse(JSON.stringify(config.agents)); // before seats are filled in
   return layoutAgents(config);
 }
 
-function start({ mode = "demo", port = 4300, host = "127.0.0.1" } = {}) {
+function start({ mode = "demo", port = 4300, host = "127.0.0.1", configPath } = {}) {
   loadDotEnv(path.join(process.cwd(), ".env"));
-  const config = loadConfig();
+  const config = loadConfig(configPath);
   const clients = new Set();
   const emit = () => {
     const data = `data: ${JSON.stringify(office.snapshot())}\n\n`;

@@ -10,6 +10,7 @@ Thanks for stopping by! Blob Office is small on purpose: plain Node.js, no depen
 git clone https://github.com/dingcodingco/hermes-blob-office
 cd hermes-blob-office
 node bin/blob-office.js       # demo mode, no Hermes needed
+npm run demo:en               # the same, with English bots and sample data
 npm test                      # node --test, about 4 seconds
 ```
 
@@ -28,14 +29,16 @@ You do **not** need Hermes or an API key to work on most things. Demo mode (`ser
 | `public/bots.js` | Draws a blob bot (shape, eyes, poses) as SVG |
 | `public/props.js` | Job props a bot holds (envelope, camera, …) |
 | `public/assets/building.png` | Building background (floor lines are in `FLOOR_Y` in `app.js`) |
-| `office.config.json` | Bot names, jobs, floors |
+| `office.config.json` | Bot names, jobs, floors (Korean) |
+| `examples/en/office.config.json` | The same office in English |
+| `server/demo-text.js` | Demo reports, approvals and kanban cards per language |
 | `test/` | `node:test` tests and a fake Hermes CLI |
 
 ## Good first contributions
 
 - **A new prop.** See below.
 - **A new building theme** (night, rainy day). Keep the floor lines where `FLOOR_Y` expects them, or update `FLOOR_Y`, `SLOT_X`, `LIFT_X`.
-- **Translations** of the UI strings in `public/app.js` and `server/i18n.js`.
+- **Translations.** UI strings live in `public/app.js` and `server/i18n.js`, demo text in `server/demo-text.js`, and a translated office in `examples/<lang>/office.config.json`.
 - **Docs and screenshots** in your language.
 - **Bug reports** with steps to reproduce. Please include your Node.js and Hermes versions.
 

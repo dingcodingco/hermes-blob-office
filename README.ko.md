@@ -88,7 +88,7 @@ node bin/blob-office.js --hermes
 - 몸 모양과 색은 층마다 정해진 계열에서 봇 순서대로 돌아가며 붙어요. `"shape"`, `"color"` 로 직접 정할 수도 있어요.
 - 여기 적지 않은 프로필도 자동으로 들어와요. 끄려면 `"autoAddProfiles": false` 를 넣어요.
 - 한 층에 6명이 넘으면 2관·3관이 생겨요. 화면 위 버튼으로 건물을 옮겨 봐요.
-- 영어 UI로 바꾸려면 `"lang": "en"` 을 추가해요. 기본값은 한국어(`"ko"`)예요.
+- 영어 UI로 바꾸려면 `"lang": "en"` 을 추가해요. 기본값은 한국어(`"ko"`)예요. 봇 이름·업무·데모 문구까지 영어인 설정은 [`examples/en/office.config.json`](examples/en/office.config.json)에 있어요(`npm run demo:en`). 다른 설정 파일은 `--config 경로` 로 실행해요.
 
 ## 5. 회의
 
