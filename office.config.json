@@ -1,0 +1,32 @@
+{
+  "title": "Blob Office",
+  "lang": "ko",
+  "autoAddProfiles": true,
+  "agents": [
+    { "id": "moa",      "name": "모아",   "floor": "lobby",     "job": "보내기·게시·결제 전 승인",   "prop": "stamp",     "profile": "default" },
+    { "id": "chorong",  "name": "초롱",   "floor": "lobby",     "job": "아침 브리핑 · 비서실장",      "prop": "brief",     "profile": "chief" },
+    { "id": "her",      "name": "헤르",   "floor": "lobby",     "job": "헤르메스로 사무실 옮기기",    "prop": "box",       "profile": "hermes" },
+
+    { "id": "letter",   "name": "레터",   "floor": "secretary", "job": "메일 분류·답장 초안",         "prop": "envelope",  "profile": "mail" },
+    { "id": "note",     "name": "노트",   "floor": "secretary", "job": "회의록 정리·할 일 배정",      "prop": "notebook",  "profile": "minutes" },
+    { "id": "cally",    "name": "캘리",   "floor": "secretary", "job": "일정·회의 조율",              "prop": "calendar",  "profile": "calendar" },
+    { "id": "weekly",   "name": "위클리", "floor": "secretary", "job": "주간 보고 초안",              "prop": "clipboard", "profile": "weekly" },
+    { "id": "antenna",  "name": "안테나", "floor": "secretary", "job": "업계 소식·X 실시간 추적",     "prop": "antenna",   "profile": "news" },
+
+    { "id": "celly",    "name": "셀리",   "floor": "oa",        "job": "엑셀 정리·그래프 보고서",     "prop": "sheet",     "profile": "excel" },
+    { "id": "slidey",   "name": "슬라이", "floor": "oa",        "job": "회의 자료 PPT 초안",          "prop": "slides",    "profile": "ppt" },
+    { "id": "yoyak",    "name": "요약이", "floor": "oa",        "job": "문서 요약·서식 맞추기",       "prop": "marker",    "profile": "docs" },
+    { "id": "sigma",    "name": "시그마", "floor": "oa",        "job": "구글 시트 자동 집계",         "prop": "sigma",     "profile": "sheets" },
+    { "id": "gureum",   "name": "구름",   "floor": "oa",        "job": "고객 리뷰·설문 분석",         "prop": "magnifier", "profile": "reviews" },
+
+    { "id": "bureung",  "name": "부릉",   "floor": "sales",     "job": "제안서·견적서 초안",          "prop": "case",      "profile": "sales" },
+    { "id": "card",     "name": "카드",   "floor": "sales",     "job": "카드뉴스 제작",               "prop": "palette",   "profile": "cardnews" },
+    { "id": "hwakseong","name": "확성",   "floor": "sales",     "job": "채널별 홍보 문구",            "prop": "megaphone", "profile": "promo" },
+
+    { "id": "idea",     "name": "아이디", "floor": "content",   "job": "채널 주제 찾기",              "prop": "bulb",      "profile": "topics" },
+    { "id": "cut",      "name": "컷",     "floor": "content",   "job": "쇼츠·릴스 한 편 완성·검수",   "prop": "camera",    "profile": "shorts" },
+    { "id": "copy",     "name": "카피",   "floor": "content",   "job": "같은 방식으로 여러 편",       "prop": "stack",     "profile": "batch" },
+    { "id": "timer",    "name": "타이머", "floor": "content",   "job": "예약 게시·채널별 규칙",       "prop": "clock",     "profile": "scheduler" },
+    { "id": "graphy",   "name": "그래피", "floor": "content",   "job": "반응 숫자 기록·판매 연결",    "prop": "chart",     "profile": "stats" }
+  ]
+}

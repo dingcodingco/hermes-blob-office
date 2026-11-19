@@ -1,0 +1,82 @@
+:root {
+  --bg: #ece7e1; --paper: #fffaf3; --ink: #3d3733; --muted: #8a7f76; --line: #e3d9cc;
+  --work: #3b82f6; --ask: #f59e0b; --done: #22c55e; --idle: #9ca3af; --off: #c4bbb2;
+}
+* { box-sizing: border-box; }
+html, body { margin: 0; height: 100%; }
+body { background: var(--bg); color: var(--ink); font-family: "Pretendard", "Inter", -apple-system, system-ui, sans-serif; display: flex; flex-direction: column; }
+button { font: inherit; color: inherit; cursor: pointer; }
+
+.topbar { display: flex; align-items: center; gap: 16px; padding: 12px 18px; }
+.brand { display: flex; align-items: center; gap: 10px; }
+.logo svg { width: 34px; height: 34px; display: block; }
+.brand strong { font-size: 20px; font-weight: 900; letter-spacing: -0.02em; }
+.badge { font-size: 12px; font-weight: 800; padding: 4px 10px; border-radius: 99px; background: var(--paper); border: 2px solid var(--ink); }
+.badge.live { background: #d9f7e5; }
+.counts { display: flex; gap: 6px; flex-wrap: wrap; }
+.counts span { font-size: 12px; font-weight: 700; padding: 4px 10px; border-radius: 99px; background: var(--paper); border: 2px solid var(--line); display: inline-flex; align-items: center; gap: 6px; }
+.counts i { width: 8px; height: 8px; border-radius: 50%; display: inline-block; }
+.tabs { margin-left: auto; display: flex; gap: 8px; align-items: center; }
+.tabs button, .pages button { padding: 8px 14px; border-radius: 12px; border: 2.5px solid var(--ink); background: var(--paper); font-weight: 800; font-size: 14px; box-shadow: 0 3px 0 var(--ink); }
+.tabs button.on, .pages button.on { background: var(--ink); color: var(--paper); }
+.tabs button.primary { background: #ffd166; }
+.tabs button:active { transform: translateY(2px); box-shadow: 0 1px 0 var(--ink); }
+.pages { display: flex; gap: 6px; }
+.pages[hidden] { display: none; }
+.pages[hidden] { display: none; }
+
+.layout { flex: 1; min-height: 0; display: grid; grid-template-columns: 1fr 360px; gap: 14px; padding: 0 18px 18px; }
+.stage-wrap { position: relative; min-height: 0; border-radius: 22px; overflow: hidden; background: #e7e4ea; border: 2.5px solid var(--ink); }
+.stage { width: 100%; height: 100%; display: block; }
+.stage .bot { cursor: pointer; }
+.stage .bot:hover .tag rect.fill { fill: #fff3cf; }
+
+.panel { background: var(--paper); border: 2.5px solid var(--ink); border-radius: 22px; display: flex; flex-direction: column; min-height: 0; overflow: hidden; }
+.p-head { padding: 16px 18px 12px; border-bottom: 2px dashed var(--line); }
+.p-head h2 { margin: 0; font-size: 18px; font-weight: 900; }
+.p-head p { margin: 4px 0 0; font-size: 13px; color: var(--muted); line-height: 1.45; }
+.p-body { flex: 1; overflow: auto; padding: 12px 18px 18px; }
+.who { display: flex; gap: 10px; align-items: center; }
+.face { width: 44px; height: 44px; flex: none; display: block; }
+.face.sm { width: 22px; height: 22px; }
+.note { font-size: 12px; background: #fff3cf; border: 2px solid #f2d27a; border-radius: 10px; padding: 8px 10px; margin-bottom: 10px; }
+
+.feed-item { display: flex; gap: 10px; padding: 10px 0; border-bottom: 2px dashed var(--line); font-size: 14px; line-height: 1.45; }
+.feed-item strong { font-weight: 900; }
+.feed-item time { font-size: 11px; color: var(--muted); margin-left: 4px; }
+.feed-item .floor { font-size: 11px; font-weight: 800; color: #fff; padding: 1px 6px; border-radius: 99px; margin-left: 4px; }
+
+.cols { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; }
+.col h3 { font-size: 13px; font-weight: 900; margin: 0 0 8px; display: flex; justify-content: space-between; }
+.col h3 span { color: var(--muted); }
+.card { background: #fff; border: 2px solid var(--ink); border-radius: 10px; padding: 8px 10px; margin-bottom: 8px; font-size: 13px; font-weight: 700; box-shadow: 0 2px 0 var(--ink); }
+.col.blocked .card { background: #fff1d6; } .col.done .card { background: #e3f8eb; } .col.running .card { background: #e6efff; }
+.card .by { display: flex; align-items: center; gap: 4px; margin-top: 6px; font-size: 12px; font-weight: 600; color: var(--muted); }
+
+.floor-group { margin-bottom: 14px; }
+.floor-group h3 { font-size: 13px; font-weight: 900; margin: 6px 0 8px; display: flex; align-items: center; gap: 6px; }
+.floor-group h3 i { width: 10px; height: 10px; border-radius: 3px; display: inline-block; }
+.staff { border: 2px solid var(--line); border-radius: 14px; padding: 10px; margin-bottom: 8px; background: #fff; }
+.staff strong { font-weight: 900; } .staff .job { display: block; font-size: 12px; color: var(--muted); }
+.label { font-size: 11px; font-weight: 800; color: var(--muted); margin: 8px 0 4px; }
+.chips { display: flex; flex-wrap: wrap; gap: 4px; }
+.chip { font-size: 12px; font-weight: 700; padding: 3px 8px; border-radius: 99px; background: #f3ece2; }
+.chip.conn { background: #e6efff; }
+
+.msg { max-width: 86%; padding: 9px 12px; border-radius: 14px; margin: 8px 0; font-size: 14px; line-height: 1.5; }
+.msg-user { margin-left: auto; background: var(--ink); color: var(--paper); border-bottom-right-radius: 4px; }
+.msg-agent { background: #f3ece2; border-bottom-left-radius: 4px; }
+.msg .demo { display: block; font-size: 10px; color: var(--muted); margin-top: 4px; }
+.approve { background: #fff1d6; border: 2.5px solid var(--ink); border-radius: 14px; padding: 12px; margin: 8px 0 12px; font-size: 14px; line-height: 1.5; }
+.approve .row { display: flex; gap: 8px; margin-top: 10px; }
+.btn { padding: 8px 14px; border-radius: 10px; border: 2.5px solid var(--ink); background: #ffd166; font-weight: 900; box-shadow: 0 3px 0 var(--ink); }
+.btn.ghost { background: var(--paper); }
+.composer { display: flex; gap: 8px; padding: 12px; border-top: 2px dashed var(--line); }
+.composer input { flex: 1; font: inherit; padding: 10px 12px; border-radius: 12px; border: 2.5px solid var(--ink); background: #fff; }
+.composer button { padding: 0 16px; border-radius: 12px; border: 2.5px solid var(--ink); background: var(--ink); color: var(--paper); font-weight: 900; }
+
+@media (max-width: 1000px) {
+  .layout { grid-template-columns: 1fr; grid-template-rows: minmax(320px, 58vh) auto; }
+  .counts { display: none; }
+  .tabs button { padding: 6px 10px; font-size: 13px; }
+}

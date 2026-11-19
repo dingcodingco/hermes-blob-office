@@ -1,0 +1,40 @@
+{
+  "name": "hermes-blob-office",
+  "version": "0.1.0",
+  "description": "A building of cute blob bots that shows your Hermes Agent profiles at work, floor by floor.",
+  "keywords": [
+    "hermes-agent",
+    "ai-agents",
+    "dashboard",
+    "virtual-office",
+    "nous-research",
+    "svg"
+  ],
+  "homepage": "https://github.com/dingcodingco/hermes-blob-office#readme",
+  "bugs": {
+    "url": "https://github.com/dingcodingco/hermes-blob-office/issues"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/dingcodingco/hermes-blob-office.git"
+  },
+  "license": "MIT",
+  "bin": {
+    "blob-office": "bin/blob-office.js"
+  },
+  "main": "server/index.js",
+  "files": [
+    "bin",
+    "server",
+    "public",
+    "office.config.json"
+  ],
+  "engines": {
+    "node": ">=20"
+  },
+  "scripts": {
+    "demo": "node bin/blob-office.js",
+    "hermes": "node bin/blob-office.js --hermes",
+    "test": "node --test test/*.test.js"
+  }
+}
