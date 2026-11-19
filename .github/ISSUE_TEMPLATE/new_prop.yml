@@ -1,0 +1,33 @@
+name: New prop
+description: Propose a prop for a job a bot does (envelope for mail, camera for shorts, …)
+labels: [prop]
+body:
+  - type: input
+    id: job
+    attributes:
+      label: Job and prop
+      placeholder: "translation bot → a little dictionary"
+    validations:
+      required: true
+  - type: dropdown
+    id: floor
+    attributes:
+      label: Which floor does this job belong to?
+      options:
+        - 5F Content Studio
+        - 4F Sales & Marketing
+        - 3F Docs & Data
+        - 2F Assistant Office
+        - 1F Lobby & Approvals
+        - A new floor
+  - type: textarea
+    id: words
+    attributes:
+      label: Job words
+      description: Words in a bot's name, job or profile that should pick this prop (Korean and English welcome).
+  - type: checkboxes
+    id: help
+    attributes:
+      label: Want to build it?
+      options:
+        - label: I'd like to open a PR (steps are in CONTRIBUTING.md → Adding a prop)
